@@ -1,0 +1,36 @@
+#using the scroller
+
+from pygame import *
+
+screen = display.set_mode((800,600))
+
+size = 10
+running =True
+while running:
+    for e in event.get():
+        if e.type == QUIT:
+            running = False
+        if e.type==MOUSEBUTTONDOWN:
+            if e.button==4:
+                print("scroll up")
+                size+=1
+            elif e.button==5:
+                print("scroll down")
+                size-=1
+            elif e.button==1:
+                print("left click")
+                start=e.pos
+                
+
+
+    mb = mouse.get_pressed()
+    mx,my = mouse.get_pos()
+    if mb[0]==1:
+        screen.fill((0,0,0))
+        print(size)
+        draw.line(screen,((255,0,0)),start,(mx,my),size)
+                  
+
+    display.flip()
+
+quit()
